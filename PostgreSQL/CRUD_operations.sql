@@ -2,13 +2,9 @@
 
 INSERT INTO cities VALUES (2670, 'Greve'), (2635, 'Ishøj'),(4534, 'Hørve');
 
-INSERT INTO addresses (street, city_id) VALUES 
-('Humlehaven 23', 2670), 
-('Bjergvej 65', 4534);
-
-INSERT INTO customer (name, address_id, email, telefon) VALUES 
-('Frederikke Nilsson', 1, 'example@hotmail.com', '12345678'), 
-('Simone Hansen', 2, 'example1@hotmail.com', '12345679');
+INSERT INTO customer (name, street, city_id, email, phone) VALUES 
+('Frederikke Nilsson', 'Haven 1', 2670, 'example@hotmail.com', '12345678'), 
+('Simone Hansen', 'Haven 2', 2635, 'example1@hotmail.com', '12345679');
 
 INSERT INTO orders (amount, price, customer_id) VALUES 
 (3, 300, 1),

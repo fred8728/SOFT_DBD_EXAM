@@ -5,18 +5,13 @@ city_id int PRIMARY KEY,
 name varchar(30) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS addresses (
-address_id SERIAL PRIMARY KEY,
-street varchar(75) NOT NULL,
-city_id int REFERENCES cities ON DELETE CASCADE 
-);
-
 CREATE TABLE IF NOT EXISTS customer(
 customer_id SERIAL PRIMARY KEY,
 name varchar(40) NOT NULL,
-address_id int REFERENCES addresses ON DELETE CASCADE,
+street varchar(40),
+city_id int REFERENCES cities ON DELETE CASCADE,
 email varchar(40) UNIQUE,
-telefon char(8) UNIQUE
+phone char(8) UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS orders(

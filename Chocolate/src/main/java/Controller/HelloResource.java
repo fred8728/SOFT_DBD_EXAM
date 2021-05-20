@@ -1,4 +1,4 @@
-package com.example.Chocolate;
+package Controller;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
