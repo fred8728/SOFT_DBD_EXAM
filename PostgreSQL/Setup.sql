@@ -1,5 +1,3 @@
-
-
 CREATE SCHEMA IF NOT EXISTS Chocolate;
 
 CREATE TABLE IF NOT EXISTS cities(
@@ -17,8 +15,8 @@ CREATE TABLE IF NOT EXISTS customer(
 customer_id SERIAL PRIMARY KEY,
 name varchar(40) NOT NULL,
 address_id int REFERENCES addresses ON DELETE CASCADE,
-email varchar(40) NOT NULL,
-telefon char(8) NOT NULL
+email varchar(40) UNIQUE,
+telefon char(8) UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS orders(
