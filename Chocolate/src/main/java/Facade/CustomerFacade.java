@@ -24,8 +24,8 @@ public class CustomerFacade {
         ArrayList<Customer> customers = new ArrayList<>();
 
         String query = "SELECT * FROM allCustomers";
-        PreparedStatement statement = conn.prepareStatement(query);
-        try(ResultSet result = statement.executeQuery()) {
+        PreparedStatement stmt = conn.prepareStatement(query);
+        try(ResultSet result = stmt.executeQuery()) {
             while (result.next()) {
                 Customer customer = new Customer(result.getInt(1), result.getString(2), result.getString(3), result.getInt(4), result.getString(5), result.getString(6));
                 customers.add(customer);
@@ -131,11 +131,14 @@ public class CustomerFacade {
     }
 
     public void deleteCustomer(int id) throws SQLException {
-        String query = "CALL deleteCustomer(?);";
-        Customer customer = null;
-        PreparedStatement stmt = conn.prepareStatement(query);
-        stmt.setInt(1,id);
-        stmt.executeUpdate();
+        try{
+            String query = "CALL deleteCustomer(?);";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setInt(1,id);
+            stmt.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     public static void main(String[] args) throws SQLException {
