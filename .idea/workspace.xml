@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3fce8648-b981-44ab-9ce9-97df86529c25" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chokolade/src/main/java/neo4j/Querys.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chokolade/src/main/java/neo4j/Querys.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chokolade/target/classes/neo4j/test.class" beforeDir="false" afterPath="$PROJECT_DIR$/Chokolade/target/classes/neo4j/test.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

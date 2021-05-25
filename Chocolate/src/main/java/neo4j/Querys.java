@@ -108,7 +108,7 @@ public class Querys implements AutoCloseable {
         //t.createProduct("Twix",15,"now even better",500);
         //t.updateProduct("Twix",55,"now even more twix",5000);
         //t.deleteProduct("Twix");
-    //    t.deleteProductsRelations("Mars bar");
+        //t.deleteProductsRelations("Mars bar");
 
         //t.createRelationToProduct("Dark Chocolate 2", "Mars bar");
 
@@ -119,8 +119,8 @@ public class Querys implements AutoCloseable {
         //System.out.println(t.getProduct("Mars bar").list());
 
 
-        //t.deleteEverythingInDatabase(); DELETES EVERYTHING IN THE DATABASE
-
+        t.deleteEverythingInDatabase(); //DELETES EVERYTHING IN THE DATABASE
+/*
         t.createProduct("Twix",15,"now even better",500);
         t.createProduct("Mars",15,"now even better",500);
         t.createProduct("Bounty",15,"now even better",500);
@@ -145,6 +145,9 @@ public class Querys implements AutoCloseable {
         t.createRelationToProduct("Dark Chocolate", "Toblerone");
         t.createRelationToProduct("White Chocolate", "Marabou");
         t.createRelationToProduct("Ruby Chocolate", "Ritter Sport");
+
+
+ */
         t.close();
 
 

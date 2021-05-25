@@ -33,6 +33,15 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.10.3" />
           <element id="library" level="project" name="Maven: com.github.docker-java:docker-java-transport-zerodep:3.2.5" />
           <element id="library" level="project" name="Maven: com.github.docker-java:docker-java-transport:3.2.5" />
+          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot:2.5.0" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-core:5.3.7" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jcl:5.3.7" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context:5.3.7" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.3.7" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-expression:5.3.7" />
+          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.5.0" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-web:5.3.7" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-beans:5.3.7" />
         </element>
       </element>
       <element id="directory" name="META-INF">
