@@ -1,10 +1,7 @@
 package Facade;
 
-import Model.Customer;
 import Model.Order;
 import Model.OrderDetails;
-
-import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -68,57 +65,55 @@ public class OrderFacade {
         }
     }
 
-    public static void main(String[] args) throws SQLException {
-        OrderFacade orderFacade = new OrderFacade();
-        for(String o : orderFacade.getOrders()){
-            System.out.println(o);
-        }
-        Order order = new Order(0,2, 700, "received order", 1);
-        ArrayList<OrderDetails> items = new ArrayList<>();
-        OrderDetails o1 = new OrderDetails(1,100,1);
-        OrderDetails o2 = new OrderDetails(2,200,2);
-        OrderDetails o3 = new OrderDetails(3,200,1);
-        items.add(o1);
-        items.add(o2);
-        items.add(o3);
-        orderFacade.addOrder(order, items);
-        for(OrderDetails o : orderFacade.getOrderDetails(1)){
-            System.out.println(o);
-        }
-
-        //orderFacade.deleteOrder(1);
-    }
-
     public void addOrder(Order order, ArrayList<OrderDetails> details) throws SQLException {
         try {
-            String query1 = "INSERT INTO orders (amount, price, customer_id) VALUES (?,?,?)";
-            PreparedStatement stmt = conn.prepareStatement(query1, Statement.RETURN_GENERATED_KEYS);
+            String q = "INSERT INTO orders (amount, price, customer_id) VALUES (?,?,?)";
+            PreparedStatement stmt = conn.prepareStatement(q) ;
             stmt.setInt(1, order.getAmount());
             stmt.setInt(2, order.getPrice());
             stmt.setInt(3, order.getCustomer_id());
             stmt.execute();
 
-            ResultSet result = stmt.getGeneratedKeys();
-            int generatedKey = 0;
-            if (result.next()) {
-                generatedKey = result.getInt(1);
+            int maxOrderId = 0;
+            String query2 = "SELECT * FROM MaxOrderNo";
+            PreparedStatement stmt1 = conn.prepareStatement(query2);
+            ResultSet result = stmt1.executeQuery();
+            while (result.next()){
+                maxOrderId = result.getInt(1);
             }
-            details = new ArrayList<>();
-            for(OrderDetails item : details){
-                String query2 = "INSERT INTO order_details (item_id, price, amount, order_id) VALUES (?,?,?,?)";
-                PreparedStatement ps = conn.prepareStatement(query2);
-                ps.setInt(1, item.getItem_id());
-                ps.setInt(2, item.getPrice());
-                ps.setInt(3, item.getAmount());
-                ps.setInt(4, generatedKey);
-                ps.executeUpdate();
+            for (OrderDetails item : details){
+                String q2 = "INSERT INTO order_details ( item_id, price, amount, order_id) VALUES (?,?,?,?);";
+                PreparedStatement stmt2 = conn.prepareStatement(q2);
+                stmt2.setInt(1, item.getItem_id());
+                stmt2.setInt(2, item.getPrice());
+                stmt2.setInt(3, item.getAmount());
+                stmt2.setInt(4, maxOrderId);
+                stmt2.execute();
             }
-
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        } finally {
-            conn.close();
         }
+    }
+
+    public static void main(String[] args) throws SQLException {
+        OrderFacade orderFacade = new OrderFacade();
+        for(String o : orderFacade.getOrders()){
+            System.out.println(o);
+        }
+        Order order = new Order(0,3, 800, 1);
+        ArrayList<OrderDetails> items = new ArrayList<>();
+        OrderDetails o1 = new OrderDetails(10,100,1);
+        OrderDetails o2 = new OrderDetails(21,200,2);
+        OrderDetails o3 = new OrderDetails(31,200,1);
+        items.add(o1);
+        items.add(o2);
+        items.add(o3);
+        orderFacade.addOrder(order, items);
+        for(OrderDetails o : orderFacade.getOrderDetails(4)){
+            System.out.println(o);
+        }
+
+        //orderFacade.deleteOrder(1);
     }
 
 }

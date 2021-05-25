@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="87eed435-0054-45e9-b10b-e3a550e712a8" name="Chocolate" url="http://localhost">
+        <fileTransfer mountedRoot="C:\Users\fskn\Documents\Softwareudvikling\1 semester\Database\Eksamensprojekt\Chocolate\Server" accessType="MOUNT" port="0" />
+      </webServer>
+    </option>
+  </component>
+</project>
