@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="PublishConfigData" serverName="Chocolate" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
       <paths name="Chocolate">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
+=======
+  <component name="PublishConfigData" serverName="Chocolade" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="Chocolade">
+        <serverdata>
+          <mappings>
+            <mapping deploy="\" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="glassfish6">
+        <serverdata>
+          <mappings>
+            <mapping deploy="\" local="$PROJECT_DIR$" web="/" />
+>>>>>>> 85dc36660f82618c022dae786fc13d2a384d4d1d
           </mappings>
         </serverdata>
       </paths>
