@@ -28,7 +28,6 @@ public class Querys implements AutoCloseable {
                     ", description: \"" + description + "\"" +
                     ", weight:" + weight + "})");
         }
-
     }
 
     public void updateProduct(String name, int price, String description, int weight) {
@@ -39,7 +38,6 @@ public class Querys implements AutoCloseable {
                     ", p.weight= " + weight + "" +
                     "RETURN p");
         }
-
     }
 
 
@@ -48,7 +46,6 @@ public class Querys implements AutoCloseable {
         try (Session session = driver.session()) {
             result = session.run("MATCH (n:Product) where n.name =\"" + name + "\"  RETURN n");
             System.out.println(result.list());
-
         }
         return result;
     }
@@ -58,14 +55,12 @@ public class Querys implements AutoCloseable {
             session.run("MATCH (m:Product {name:\"" + name + "\"})\n" +
                     "DELETE m");
         }
-
     }
 
     public void createCategory(String name) {
         try (Session session = driver.session()) {
             session.run("MERGE (n:Category {name:\"" + name + "\"})");
         }
-
     }
 
 
@@ -94,7 +89,7 @@ public class Querys implements AutoCloseable {
 
         //tilføj rigtigt ralations navn
         try (Session session = driver.session()) {
-            session.run("MATCH (n {name: \"" + productName + "\"})-[r:RELTYPE]->() " +
+            session.run("MATCH (n:Product {name: \"" + productName + "\"})<-[r:RELTYPE]-() " +
                     "DELETE r");
         }
     }
@@ -102,11 +97,12 @@ public class Querys implements AutoCloseable {
 
     public static void main(String... args) throws Exception {
         Querys t = new Querys("bolt://localhost:7687", "neo4j", "1234");
+
         //t.createCategory("Dark Chocolate 2");
         //t.createProduct("Twix",15,"now even better",500);
         //t.updateProduct("Twix",55,"now even more twix",5000);
         //t.deleteProduct("Twix");
-        t.deleteProductsRelations("Mars bar");
+    //    t.deleteProductsRelations("Mars bar");
 
         //t.createRelationToProduct("Dark Chocolate 2", "Mars bar");
 
@@ -115,14 +111,31 @@ public class Querys implements AutoCloseable {
         //System.out.println("query1: returns all nodes id" + result5.list()+ "\n" );
 
         //System.out.println(t.getProduct("Mars bar").list());
-/*
 
-        try (Session session = driver.session()) {
-            Result result1 = session.run("CREATE (n:Product {name:" + name + ", price: " + price +", discription: " + description +", weight: " + weight +"})");
-            //Result result1 = session.run("MATCH (n:Person) RETURN n.name");
-            System.out.println("query1: returns all nodes id" + result1.list()+ "\n" );
-
-        }*/
+        t.createProduct("Twix",15,"now even better",500);
+        t.createProduct("Mars",15,"now even better",500);
+        t.createProduct("Bounty",15,"now even better",500);
+        t.createProduct("Kitkat",15,"now even better",500);
+        t.createProduct("Guldbar",15,"now even better",500);
+        t.createProduct("Snickers",15,"now even better",500);
+        t.createProduct("After Eight",15,"now even better",500);
+        t.createProduct("Toblerone",15,"now even better",500);
+        t.createProduct("Marabou",15,"now even better",500);
+        t.createProduct("Ritter Sport",15,"now even better",500);
+        t.createCategory("Dark Chocolate");
+        t.createCategory("Light Chocolate");
+        t.createCategory("White Chocolate");
+        t.createCategory("Ruby Chocolate");
+        t.createRelationToProduct("Dark Chocolate", "Mars");
+        t.createRelationToProduct("Light Chocolate", "Twix");
+        t.createRelationToProduct("Dark Chocolate", "Bounty");
+        t.createRelationToProduct("Dark Chocolate", "Kitkat");
+        t.createRelationToProduct("Dark Chocolate", "Guldbar");
+        t.createRelationToProduct("Light Chocolate", "Snickers");
+        t.createRelationToProduct("Dark Chocolate", "After Eight");
+        t.createRelationToProduct("Dark Chocolate", "Toblerone");
+        t.createRelationToProduct("White Chocolate", "Marabou");
+        t.createRelationToProduct("Ruby Chocolate", "Ritter Sport");
         t.close();
     }
 
