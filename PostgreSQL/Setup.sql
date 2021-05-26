@@ -23,7 +23,8 @@ customer_id int REFERENCES customer ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS order_details(
-item_id int PRIMARY KEY,
+detail_id SERIAL PRIMARY KEY,
+item_id int NOT NULL,
 price int NOT NULL, 
 amount int NOT NULL,
 order_id int REFERENCES orders ON DELETE CASCADE 
