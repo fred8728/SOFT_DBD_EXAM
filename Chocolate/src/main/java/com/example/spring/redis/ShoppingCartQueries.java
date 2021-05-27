@@ -46,13 +46,13 @@ public class ShoppingCartQueries {
         jedis.hmset("shoppingcart:"+username,allMap);
     }
 
-    public void addSingle(String username, ShoppingCart cart){
-        //Map<String,String> allMap1 = new HashMap<String, String>();
-        allMap.put(cart.productid,cart.orderid+":"+cart.userid+":"+cart.price+":"+cart.status+":"+cart.amount);
-
-        //var ty = cart.orderid+":"+cart.userid+":"+cart.price+":"+cart.status+":"+cart.amount;
-        //return ty;
-    }
+//    public void addSingle(String username, ShoppingCart cart){
+//        //Map<String,String> allMap1 = new HashMap<String, String>();
+//        allMap.put(cart.product_id,cart.order_id+":"+cart.customer_id +":"+cart.price+":"+cart.status+":"+cart.amount);
+//
+//        //var ty = cart.orderid+":"+cart.userid+":"+cart.price+":"+cart.status+":"+cart.amount;
+//        //return ty;
+//    }
 
     public void removeSingle(String username, String pId){
         allMap.remove(pId);
@@ -61,16 +61,16 @@ public class ShoppingCartQueries {
 
         jedis.del("shoppingcart:"+username);
     }
-    public void updateAmount(String username,ShoppingCart cart, boolean more){
-        int newamount = 0;
-        if(more){
-            newamount = cart.amount + 1;
-        } else{
-            newamount = cart.amount - 1;
-        }
-
-        allMap.put(cart.productid,cart.orderid+":"+cart.userid+":"+cart.price+":"+cart.status+":"+newamount);
-    }
+//    public void updateAmount(String username,ShoppingCart cart, boolean more){
+//        int newamount = 0;
+//        if(more){
+//            newamount = cart.amount + 1;
+//        } else{
+//            newamount = cart.amount - 1;
+//        }
+//
+//        allMap.put(cart.productid,cart.orderid+":"+cart.customer_id +":"+cart.price+":"+cart.status+":"+newamount);
+//    }
 
 
 

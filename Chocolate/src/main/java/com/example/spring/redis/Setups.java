@@ -8,7 +8,7 @@ public class Setups {
 
     public GenericContainer redisContainer;
 
-    protected Test tt;
+    protected Main tt;
 
     public String host = "localhost";
     public int port = 6379;
@@ -28,11 +28,11 @@ public class Setups {
         host = "localhost";
         port = 6379;
 
-        setupContainer();
+        //setupContainer();
 
         jedis = new Jedis(host, port);
         jedis.select(9);
-        tt = new Test(jedis);
+        tt = new Main(jedis);
 
     }
 
