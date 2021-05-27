@@ -1,10 +1,9 @@
 package com.example.spring.neo4j;
 
-import org.neo4j.driver.AuthTokens;
-import org.neo4j.driver.Driver;
-import org.neo4j.driver.GraphDatabase;
-import org.neo4j.driver.Result;
-import org.neo4j.driver.Session;
+import org.neo4j.driver.*;
+
+import static org.neo4j.driver.Values.parameters;
+
 
 
 public class Querys implements AutoCloseable {
@@ -23,51 +22,55 @@ public class Querys implements AutoCloseable {
 
     public void createProduct(String name, int price, String description, int weight) {
         try (Session session = driver.session()) {
-            session.run("MERGE (n:Product {name:\"" + name + "\"" +
-                    ", price:" + price +
-                    ", description: \"" + description + "\"" +
-                    ", weight:" + weight + "})");
+            session.run("CREATE (a:Product {name: $name, price: $price, description: $description, weight: $weight})"
+                    , parameters( "name", name, "price", price, "description", description, "weight", weight));
         }
     }
 
     public void updateProduct(String name, int price, String description, int weight) {
         try (Session session = driver.session()) {
-            session.run("MATCH (p:Product {name: \"" + name + "\"})\n" +
-                    "SET p.price = " + price + "" +
-                    ", p.description = \"" + description + "\"" +
-                    ", p.weight= " + weight + "" +
-                    "RETURN p");
+            session.run("MATCH (p:Product {name: $name})\n" +
+                    "SET p.price = $price" +
+                    ", p.description = $description" +
+                    ", p.weight= $weight" +
+                    "RETURN p"
+                    ,  parameters( "name", name, "price", price, "description", description, "weight", weight));
+
+
         }
     }
 
 
-    public Result getProduct(String name) {
+    public String getProduct(String name) {
         Result result;
         try (Session session = driver.session()) {
-            result = session.run("MATCH (n:Product) where n.name =\"" + name + "\"  RETURN n");
-            System.out.println(result.list());
-        }
-        return result;
+            result = session.run("MATCH (n:Product) where n.name = $name RETURN n", parameters("name", name));
+            System.out.println(result);
+            }
+
+        return result.single().get( 0 ).asString();
     }
+
+
+
 
     public void deleteProduct(String name) {
         try (Session session = driver.session()) {
-            session.run("MATCH (m:Product {name:\"" + name + "\"})\n" +
-                    "DELETE m");
+            session.run("MATCH (m:Product {name: $name}) DELETE m"
+            ,parameters("name", name));
         }
     }
 
     public void createCategory(String name) {
         try (Session session = driver.session()) {
-            session.run("MERGE (n:Category {name:\"" + name + "\"})");
+            session.run("MERGE (n:Category {name:$name})",parameters("name", name));
         }
     }
 
 
     public void deleteCategory(String name) {
         try (Session session = driver.session()) {
-            session.run("MATCH (m:Category {name:\"" + name + "\"})\n" +
-                    "DELETE m");
+            session.run("MATCH (m:Category {name:$name}) DELETE m",parameters("name", name));
         }
     }
 
@@ -79,9 +82,10 @@ public class Querys implements AutoCloseable {
             session.run("MATCH\n" +
                     "  (a:Category),\n" +
                     "  (b:Product)\n" +
-                    "WHERE a.name = \"" + categoryName + "\" AND b.name = \"" + productName + "\"\n" +
+                    "WHERE a.name = $categoryName  AND b.name = $productName \n" +
                     "MERGE (a)-[r:INVENTORY]->(b)\n" +
-                    "RETURN type(r)");
+                    "RETURN type(r)"
+                    ,parameters("categoryName", categoryName,"productName",productName));
         }
     }
 
@@ -89,8 +93,9 @@ public class Querys implements AutoCloseable {
 
         //tilføj rigtigt ralations navn
         try (Session session = driver.session()) {
-            session.run("MATCH (n:Product {name: \"" + productName + "\"})<-[r:RELTYPE]-() " +
-                    "DELETE r");
+            session.run("MATCH (n:Product {name: $productName })<-[r:RELTYPE]-() " +
+                    "DELETE r",
+                     parameters( "productName", productName));
         }
     }
 
@@ -103,12 +108,13 @@ public class Querys implements AutoCloseable {
 
 
     public static void main(String... args) throws Exception {
-        Querys t = new Querys("bolt://localhost:7687", "neo4j", "1234");
+        Querys t = new Querys("bolt://localhost:7689", "neo4j", "1234");
         //t.createCategory("Dark Chocolate 2");
         //t.createProduct("Twix",15,"now even better",500);
         //t.updateProduct("Twix",55,"now even more twix",5000);
         //t.deleteProduct("Twix");
         //t.deleteProductsRelations("Mars bar");
+        //t.getProduct("Mars");
 
         //t.createRelationToProduct("Dark Chocolate 2", "Mars bar");
 
@@ -116,10 +122,10 @@ public class Querys implements AutoCloseable {
 
         //System.out.println("query1: returns all nodes id" + result5.list()+ "\n" );
 
-        //System.out.println(t.getProduct("Mars bar").list());
+        t.getProduct("Mars");
 
-
-        t.deleteEverythingInDatabase(); //DELETES EVERYTHING IN THE DATABASE
+        //t.deleteProduct("Twix");
+        //t.deleteEverythingInDatabase(); //DELETES EVERYTHING IN THE DATABASE
 /*
         t.createProduct("Twix",15,"now even better",500);
         t.createProduct("Mars",15,"now even better",500);
@@ -145,9 +151,7 @@ public class Querys implements AutoCloseable {
         t.createRelationToProduct("Dark Chocolate", "Toblerone");
         t.createRelationToProduct("White Chocolate", "Marabou");
         t.createRelationToProduct("Ruby Chocolate", "Ritter Sport");
-
 */
-
         t.close();
 
 

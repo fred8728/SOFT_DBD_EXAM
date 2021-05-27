@@ -1,18 +1,14 @@
-package redis;
+package com.example.spring.redis;
 
 
 import redis.clients.jedis.Jedis;
-//import org.testcontainers.containers.GenericContainer;
-//import org.testcontainers.utility.DockerImageName;
-import org.junit.jupiter.api.*;
-import org.testcontainers.containers.GenericContainer;
-import org.testcontainers.utility.DockerImageName;
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.Transaction;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+
+//import org.testcontainers.containers.GenericContainer;
+//import org.testcontainers.utility.DockerImageName;
 
 public class Test {
 

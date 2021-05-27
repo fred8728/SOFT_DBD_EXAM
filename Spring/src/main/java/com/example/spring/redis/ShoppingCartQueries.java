@@ -1,4 +1,4 @@
-package redis;
+package com.example.spring.redis;
 
 import redis.clients.jedis.Jedis;
 
