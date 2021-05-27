@@ -1,5 +1,4 @@
-package redis;
-
+package com.example.spring.redis;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.utility.DockerImageName;
 import redis.clients.jedis.Jedis;
