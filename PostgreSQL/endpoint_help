@@ -34,3 +34,28 @@ URL: http://localhost:8080/customer/updateAddress/1
 DeleteCustomer()
 URL: http://localhost:8080/deleteCustomer/2
 
+AddOrder()
+URL:
+{ 
+    "order": {
+        "order_id": 0,
+        "amount": 4,
+        "price": 250, 
+        "customer_id": 1
+    },
+    "details": [{
+            "item_id": 1 ,
+            "price": 30, 
+            "amount": 1
+         },
+         {
+            "item_id": 2,
+            "price": 50 , 
+            "amount": 2
+          },
+         {
+            "item_id": 3,
+            "price": 60, 
+            "amount": 2
+          }]
+}

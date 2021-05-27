@@ -1,18 +1,20 @@
 package com.example.spring.controller;
 
 import com.example.spring.postgress.Facade.OrderFacade;
+import com.example.spring.postgress.Model.AddOrder;
 import com.example.spring.postgress.Model.Customer;
 import com.example.spring.postgress.Model.Order;
 import com.example.spring.postgress.Model.OrderDetails;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.boot.web.servlet.error.ErrorController;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 @RestController
-public class OrderController implements ErrorController {
+public class OrderController{
 
     OrderFacade orderFacade;
 
@@ -36,20 +38,25 @@ public class OrderController implements ErrorController {
     }
 
 
-    // Needs to be tested
+    // Tested and works
+    // http://localhost:8080/deleteOrder/someid
     @DeleteMapping("deleteOrder/{id}")
     public void deleteOrder(@PathVariable int id) throws SQLException {
-        orderFacade.deleteOrder(id);
-    }
-
-    // Needs to be tested
-    @PostMapping("order/add")
-    public void addOrder(Order order, ArrayList<OrderDetails> details){
         try{
-            orderFacade.addOrder(order, details);
+            orderFacade.deleteOrder(id);
         }catch (Exception ex){
             ex.getMessage();
         }
     }
 
+    // Tested and works
+    // Add parameters to body - remember object + list
+    @PostMapping("order/add")
+    public void addOrder(@RequestBody AddOrder order){
+        try{
+            orderFacade.addOrder(order.getOrder(), order.getDetails());
+        }catch (Exception ex){
+            ex.getMessage();
+        }
+    }
 }
