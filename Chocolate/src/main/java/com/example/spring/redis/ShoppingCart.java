@@ -6,15 +6,13 @@ public class ShoppingCart {
     public String order_id;
     public String customer_id;
     public int price;
-    public boolean status;
     public int amount;
 
-    public ShoppingCart(String product_id, String order_id, String customer_id, int price, boolean status, int amount) {
+    public ShoppingCart(String product_id, String order_id, String customer_id, int price, int amount) {
         this.product_id = product_id;
         this.order_id = order_id;
         this.customer_id = customer_id;
         this.price = price;
-        this.status = status;
         this.amount = amount;
     }
 
@@ -25,7 +23,6 @@ public class ShoppingCart {
                 ", order_id=" + order_id +
                 ", customer_id=" + customer_id +
                 ", price=" + price +
-                ", status=" + status +
                 ", amount=" + amount +
                 '}';
     }
