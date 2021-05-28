@@ -1,13 +1,13 @@
 <component name="libraryTable">
-  <library name="Maven: org.apache.tomcat.embed:tomcat-embed-el:9.0.46">
+  <library name="Maven: org.rnorth.duct-tape:duct-tape:1.0.8">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-el/9.0.46/tomcat-embed-el-9.0.46.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/rnorth/duct-tape/duct-tape/1.0.8/duct-tape-1.0.8.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-el/9.0.46/tomcat-embed-el-9.0.46-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/rnorth/duct-tape/duct-tape/1.0.8/duct-tape-1.0.8-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-el/9.0.46/tomcat-embed-el-9.0.46-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/rnorth/duct-tape/duct-tape/1.0.8/duct-tape-1.0.8-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
