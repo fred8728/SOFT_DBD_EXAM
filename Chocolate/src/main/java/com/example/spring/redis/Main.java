@@ -2,23 +2,16 @@ package com.example.spring.redis;
 
 
 import redis.clients.jedis.Jedis;
-//import org.testcontainers.containers.GenericContainer;
-//import org.testcontainers.utility.DockerImageName;
-import org.junit.jupiter.api.*;
-import org.testcontainers.containers.GenericContainer;
-import org.testcontainers.utility.DockerImageName;
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.Transaction;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Test {
+public class Main {
 
     private static Jedis jedis;
 
-    public Test(Jedis jedis) {
+    public Main(Jedis jedis) {
         this.jedis = jedis;
     }
 
@@ -32,18 +25,16 @@ public class Test {
 
         ShoppingCartQueries query = new ShoppingCartQueries(jedis);
 
-        ShoppingCart sc = new ShoppingCart("p1","hej","hej",10,false,10);
-        ShoppingCart sc1 = new ShoppingCart("p2","gg","hh",7,true,6);
-        ShoppingCart sc2 = new ShoppingCart("p3","vv","bb",2,false,200);
-        ShoppingCart sc3 = new ShoppingCart("p4","aa","ss",8,true,88);
+        ShoppingCart sc = new ShoppingCart("p1","1","5",10,10);
+        ShoppingCart sc1 = new ShoppingCart("p2","1","5",7,6);
+        ShoppingCart sc2 = new ShoppingCart("p3","1","5",2,200);
+        ShoppingCart sc3 = new ShoppingCart("p4","1","5",8,88);
 
         Map<String,String> mapp = new HashMap<String, String>();
         mapp.put("productid3","orderid3:userid3:price3:status3:amount3");
         mapp.put("productid4","orderid4:userid4:price4:status4:amount4");
 
-
         System.out.println(jedis.ping());
-
 
         query.addSingle(username,sc);
         query.addSingle(username,sc1);

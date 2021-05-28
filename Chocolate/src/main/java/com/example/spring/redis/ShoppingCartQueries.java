@@ -40,15 +40,13 @@ public class ShoppingCartQueries {
         System.out.println(jedis.hgetAll("shoppingcart:"+username));
     }
 
-
     public void addAllFromSing(String username){
-
         jedis.hmset("shoppingcart:"+username,allMap);
     }
 
     public void addSingle(String username, ShoppingCart cart){
         //Map<String,String> allMap1 = new HashMap<String, String>();
-        allMap.put(cart.productid,cart.orderid+":"+cart.userid+":"+cart.price+":"+cart.status+":"+cart.amount);
+        allMap.put(cart.product_id,cart.order_id+":"+cart.customer_id +":"+cart.price+":"+cart.amount);
 
         //var ty = cart.orderid+":"+cart.userid+":"+cart.price+":"+cart.status+":"+cart.amount;
         //return ty;
@@ -69,7 +67,7 @@ public class ShoppingCartQueries {
             newamount = cart.amount - 1;
         }
 
-        allMap.put(cart.productid,cart.orderid+":"+cart.userid+":"+cart.price+":"+cart.status+":"+newamount);
+        allMap.put(cart.product_id,cart.order_id+":"+cart.customer_id +":"+cart.price+":"+newamount);
     }
 
 

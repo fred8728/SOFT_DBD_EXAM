@@ -10,10 +10,10 @@ public class AddOrder {
         this.order = order;
         this.details = details;
     }
+
     public Order getOrder() {
         return order;
     }
-
     public ArrayList<OrderDetails> getDetails() {
         return details;
     }
