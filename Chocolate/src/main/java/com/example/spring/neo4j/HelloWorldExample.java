@@ -39,16 +39,16 @@ public class HelloWorldExample implements AutoCloseable
         }
     }
 
-    public List<String> getPeople(String name)
+    public List<Integer> getPeople(String name)
     {
         try ( Session session = driver.session() )
         {
             return session.readTransaction( tx -> {
-                List<String> names = new ArrayList<>();
-                Result result = tx.run( "MATCH (n:Product) where n.name = $name RETURN n.name, n.description" , parameters("name", name));
+                List<Integer> names = new ArrayList<>();
+                Result result = tx.run( "MATCH (n:Product) where n.name = $name RETURN n.name, n.description, n.price" , parameters("name", name));
                 while ( result.hasNext() )
                 {
-                    names.add( result.next().get( 0 ).asString() );
+                    names.add( result.next().get( 2 ).asInt());
                 }
                 return names;
             } );
