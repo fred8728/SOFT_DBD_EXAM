@@ -1,7 +1,6 @@
-package com.example.spring.neo4j;
+package com.example.spring.facade;
 
-import com.example.spring.neo4j.Model.Product;
-import com.example.spring.neo4j.Model.Category;
+import com.example.spring.model.Product;
 import org.neo4j.driver.*;
 
 import java.util.ArrayList;
@@ -9,14 +8,11 @@ import java.util.List;
 
 import static org.neo4j.driver.Values.parameters;
 
-
-
-public class Querys implements AutoCloseable {
-
+public class ProductFacade implements AutoCloseable {
 
     private final Driver driver;
 
-    public Querys(String uri, String user, String password) {
+    public ProductFacade(String uri, String user, String password) {
         driver = GraphDatabase.driver(uri, AuthTokens.basic(user, password));
     }
 
@@ -44,8 +40,6 @@ public class Querys implements AutoCloseable {
         }
     }
 
-
-
     public Product getSingleProduct( final String name )
     {
         try ( Session session = driver.session() )
@@ -68,8 +62,6 @@ public class Querys implements AutoCloseable {
             return people.get(0);
             }
         }
-
-
 
     public List<Product> getAllProduct( )
     {
@@ -171,22 +163,8 @@ public class Querys implements AutoCloseable {
 
 
     public static void main(String... args) throws Exception {
-        Querys t = new Querys("bolt://localhost:7688", "neo4j", "1234");
+        ProductFacade t = new ProductFacade("bolt://localhost:7688", "neo4j", "1234");
 
-        //t.createCategory("Dark Chocolate 2");
-        //t.createProduct("Twix",15,"now even better",500);
-        //t.updateProduct("Twix",55,"now even more twix",5000);
-        //t.deleteProduct("Twix");
-        //t.deleteProductsRelations("Mars");
-        //t.deleteProduct("Mars");
-        //t.getProduct("Mars");
-
-        //t.createRelationToProduct("Dark Chocolate 2", "Mars bar");
-
-        //Result result5 = t.getProduct("Mars bar");
-        //t.getProduct("Mars");
-
-        //t.deleteProduct("Twix");
         //t.deleteEverythingInDatabase(); //DELETES EVERYTHING IN THE DATABASE
 
         t.createProduct("Twix",15,"now even better",500);

@@ -1,4 +1,4 @@
-package com.example.spring.redis;
+package com.example.spring.model;
 
 public class ShoppingCart {
 

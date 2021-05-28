@@ -1,5 +1,6 @@
-package com.example.spring.redis;
+package com.example.spring.facade;
 
+import com.example.spring.model.ShoppingCart;
 import redis.clients.jedis.Jedis;
 import java.util.HashMap;
 import java.util.Map;

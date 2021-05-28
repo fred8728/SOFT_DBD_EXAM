@@ -1,4 +1,4 @@
-package com.example.spring.neo4j.Model;
+package com.example.spring.model;
 
 public class Product {
 

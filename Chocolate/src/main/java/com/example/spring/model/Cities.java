@@ -1,4 +1,4 @@
-package com.example.spring.postgress.Model;
+package com.example.spring.model;
 
 public class Cities {
     private int city_id;

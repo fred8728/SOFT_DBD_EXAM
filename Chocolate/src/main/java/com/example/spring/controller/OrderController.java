@@ -1,8 +1,8 @@
 package com.example.spring.controller;
 
-import com.example.spring.postgress.Facade.OrderFacade;
-import com.example.spring.postgress.Model.AddOrder;
-import com.example.spring.postgress.Model.OrderDetails;
+import com.example.spring.facade.OrderFacade;
+import com.example.spring.model.AddOrder;
+import com.example.spring.model.OrderDetails;
 import org.springframework.web.bind.annotation.*;
 import java.sql.SQLException;
 import java.util.ArrayList;

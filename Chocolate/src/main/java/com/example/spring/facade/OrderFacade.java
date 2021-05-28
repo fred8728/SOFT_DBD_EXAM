@@ -1,9 +1,7 @@
-package com.example.spring.postgress.Facade;
+package com.example.spring.facade;
 
-
-import com.example.spring.postgress.Model.Order;
-import com.example.spring.postgress.Model.OrderDetails;
-
+import com.example.spring.model.Order;
+import com.example.spring.model.OrderDetails;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -95,26 +93,5 @@ public class OrderFacade {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) throws SQLException {
-        OrderFacade orderFacade = new OrderFacade();
-        for(String o : orderFacade.getOrders()){
-            System.out.println(o);
-        }
-        Order order = new Order(0,3, 800, 1);
-        ArrayList<OrderDetails> items = new ArrayList<>();
-        OrderDetails o1 = new OrderDetails(10,100,1);
-        OrderDetails o2 = new OrderDetails(21,200,2);
-        OrderDetails o3 = new OrderDetails(31,200,1);
-        items.add(o1);
-        items.add(o2);
-        items.add(o3);
-        orderFacade.addOrder(order, items);
-        for(OrderDetails o : orderFacade.getOrderDetails(4)){
-            System.out.println(o);
-        }
-
-        orderFacade.deleteOrder(13);
     }
 }

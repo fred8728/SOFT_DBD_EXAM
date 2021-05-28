@@ -1,13 +1,12 @@
 package com.example.spring.controller;
 
-import com.example.spring.redis.CartFacade;
-import com.example.spring.redis.ShoppingCart;
+import com.example.spring.facade.CartFacade;
+import com.example.spring.model.ShoppingCart;
 import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
 public class ShoppingCartController {
-
     CartFacade cartFacade;
 
     public ShoppingCartController(){

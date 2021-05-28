@@ -1,10 +1,7 @@
-package com.example.spring.postgress.Facade;
+package com.example.spring.facade;
 
-
-
-import com.example.spring.postgress.Model.Cities;
-import com.example.spring.postgress.Model.Customer;
-
+import com.example.spring.model.Cities;
+import com.example.spring.model.Customer;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -141,33 +138,5 @@ public class CustomerFacade {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) throws SQLException {
-        CustomerFacade customerFacade = new CustomerFacade();
-        //Customer c = new Customer("Tina Larsen", 1, "hello@email.dk", "23453215");
-        //customerFacade.addCustomer(c)
-//        System.out.println("__________________");
-
-//        Customer c = new Customer(0,"Testing test", "Vejleåen 2",4567, "12g11@email.dk", "65656565");
-//
-//        Cities city = new Cities(4567, "Sukkerland");
-//        customerFacade.addCustomer(c, city);
-        //customerFacade.updateCustomerBasic(2, null, "newemail@email.dk", null);
-        //customerFacade.updateCustomerAddress(2, "Vejlegården 4", 2635);
-        //customerFacade.addCustom(c);
-        //customerFacade.updateCustomer(1, null, 0, null,"42424242");
-        //customerFacade.getCustomerById(1);
-//        Customer c3 = new Customer(0, "Test person1", "Testvej 1", 2670, "testemail2@test.dk", "54343434");
-//        Customer c2 = new Customer(0, "Test person2", "Testvej 2", 2670, "testemail1@test.dk", "54333434");
-//        customerFacade.addCustomer(c3);
-//        customerFacade.addCustomer(c2);
-//        for(Customer c1 : customerFacade.getCustomers()){
-//            System.out.println(c1.toString());
-//        }
-        //Cities ci = new Cities(1234, "CityTest");
-        //customerFacade.addCity(ci);
-        System.out.println(customerFacade.getCustomerById(3));
-        //customerFacade.deleteCustomer(5);
     }
 }

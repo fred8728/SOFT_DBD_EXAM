@@ -1,10 +1,10 @@
-package com.example.spring.neo4j.Model;
+package com.example.spring.model;
 
-public class Category {
+public class ProductCategory {
 
     private String name;
 
-    public Category(String name) {
+    public ProductCategory(String name) {
         this.name = name;
     }
 
@@ -18,7 +18,6 @@ public class Category {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
