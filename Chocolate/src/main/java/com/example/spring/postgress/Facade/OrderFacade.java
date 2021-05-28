@@ -115,7 +115,7 @@ public class OrderFacade {
             System.out.println(o);
         }
 
-        //orderFacade.deleteOrder(1);
+        orderFacade.deleteOrder(13);
     }
 
 }

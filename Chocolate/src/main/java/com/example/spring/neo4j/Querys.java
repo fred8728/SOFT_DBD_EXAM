@@ -171,7 +171,8 @@ public class Querys implements AutoCloseable {
 
 
     public static void main(String... args) throws Exception {
-        Querys t = new Querys("bolt://localhost:7689", "neo4j", "1234");
+        Querys t = new Querys("bolt://localhost:7688", "neo4j", "1234");
+
         //t.createCategory("Dark Chocolate 2");
         //t.createProduct("Twix",15,"now even better",500);
         //t.updateProduct("Twix",55,"now even more twix",5000);
@@ -214,8 +215,5 @@ public class Querys implements AutoCloseable {
         t.createRelationToProduct("Ruby Chocolate", "Ritter Sport");
 
         t.close();
-
-
     }
-
 }

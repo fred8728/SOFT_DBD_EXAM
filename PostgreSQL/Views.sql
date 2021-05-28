@@ -10,3 +10,10 @@ JOIN customer ON (orders.customer_id = customer.customer_id);
 CREATE OR REPLACE VIEW allCustomers AS 
 SELECT * FROM customer;
 
+---------------
+-- MaxOrderNo
+CREATE OR REPLACE VIEW MaxOrderNo
+AS 
+SELECT * FROM orders 
+WHERE order_id = (
+    SELECT MAX(order_id) FROM orders);
