@@ -138,8 +138,7 @@ public class ProductFacade implements AutoCloseable {
                     "  (a:Category),\n" +
                     "  (b:Product)\n" +
                     "WHERE a.name = $categoryName  AND b.name = $productName \n" +
-                    "MERGE (a)-[r:INVENTORY]->(b)\n" +
-                    "RETURN type(r)"
+                    "MERGE (a)-[r:INVENTORY]-(b)"
                     ,parameters("categoryName", categoryName,"productName",productName));
         }
     }
@@ -163,9 +162,9 @@ public class ProductFacade implements AutoCloseable {
 
 
     public static void main(String... args) throws Exception {
-        ProductFacade t = new ProductFacade("bolt://localhost:7688", "neo4j", "1234");
+        ProductFacade t = new ProductFacade("bolt://localhost:7689", "neo4j", "1234");
 
-        //t.deleteEverythingInDatabase(); //DELETES EVERYTHING IN THE DATABASE
+        t.deleteEverythingInDatabase(); //DELETES EVERYTHING IN THE DATABASE
 
         t.createProduct("Twix",15,"now even better",500);
         t.createProduct("Mars",15,"now even better",500);
