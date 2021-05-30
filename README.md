@@ -26,7 +26,7 @@ Order_storedProcedures.sql
 Du er nu klar til at kunne kører Customer- og OrderController klasserne.
 
 ## Neo4j
-- Installer [Neo3j desktop](https://neo4j.com/download/)
+- Installer [Neo4j desktop](https://neo4j.com/download/)
 - Åben Neo4j desktop og opret en ny database
 - Åben den nye database og opret 3 lokale databaser med version 4.2.0
 - Åben denne [mappe](https://github.com/fred8728/SOFT_DBD_EXAM/tree/master/Neo4j), som indeholder 3 Neo4j conf. 
